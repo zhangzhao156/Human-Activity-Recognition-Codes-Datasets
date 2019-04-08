@@ -1,15 +1,4 @@
 # coding: utf-8
-'''
-    - "ZF_UNET_224" Model based on UNET code from following paper: https://arxiv.org/abs/1505.04597
-    - This model used to get 2nd place in DSTL competition: https://www.kaggle.com/c/dstl-satellite-imagery-feature-detection
-    - For training used DICE coefficient: https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient
-    - Input shape for model is 224x224 (the same as for other popular CNNs like VGG or ResNet)
-    - It has 3 input channels (to process standard RGB (BGR) images). You can change it with variable "INPUT_CHANNELS"
-    - It trained on random image generator with random light shapes (ellipses) on dark background with noise (< 10%).
-    - In most cases model ZF_UNET_224 is ok to be used without pretrained weights.
-'''
-
-__author__ = 'ZFTurbo: https://kaggle.com/zfturbo'
 
 from keras.models import Model
 from keras.layers import Input, Conv2D, MaxPooling2D, UpSampling2D,Convolution2D, Deconvolution2D
