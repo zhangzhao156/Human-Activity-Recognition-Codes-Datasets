@@ -1,0 +1,22 @@
+Multi-class Segment Error Table (MSET) performance evaluation for continuous recognition. Basic Matlab scripts.
+
+October 2006, by Jamie A. Ward, ETH Zurich
+=========================
+
+Scripts
+--------
+test_mset_plotting.m 
+This gives an example of how to use the scripts. ( In the absence of any decent tutorial, probably this is the best place to start. )
+
+mset.m:   [t, s, e] = mset(pred, ground, varargin)
+
+mset_segments.m:  [r, lab] = mset_segments( pred, ground, varargin )
+
+mset_print.m: texout = mset_print( nClasses, varargin )
+
+read_seg_info.m: out = read_seg_info( segment_info, sample_rate, include_classes, seq_len, format )
+
+write_seg_info.m: segment_info = write_seg_info( sample_rate, input, format )
+
+plot_mset_errors.m (incomplete): M=plot_mset_errors(numArgs, chartType, varargin)
+

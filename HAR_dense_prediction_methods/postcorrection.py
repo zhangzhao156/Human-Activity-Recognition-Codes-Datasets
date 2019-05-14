@@ -5,19 +5,24 @@ import pandas as pd
 import common
 import logging
 from scipy import stats
-logging.basicConfig(filename='postcorrection.log', level=logging.DEBUG)
+logging.basicConfig(filename='postcorrection0503.log', level=logging.DEBUG)
 logging.info('hapt freq\n')
 
-# post correction
-B = 0
-F = 0
-C = 0
+
 
 # HAPT
-# P = 20
-# y_pred_prob = np.load("y_pred_prob_UCI_HAPT_224_UNET_0318.npy")
-# y_pred = np.load("y_pred_UCI_HAPT_224_UNET_0318.npy")
-# label_gd = np.load("labels_gd_UCI_HAPT_224_UNET_0318.npy")
+# P = 12
+# y_pred_prob = np.load("y_pred_prob_UCI_HAPT_224_segnet_0427.npy")
+# y_pred = np.load("y_pred_UCI_HAPT_224_segnet_0427.npy")
+# label_gd = np.load("labels_gd_UCI_HAPT_224_segnet_0427.npy")
+# # P = 5
+# # y_pred_prob = np.load("y_pred_prob_UCI_HAPT_28_mask_0501.npy")
+# # y_pred = np.load("y_pred_UCI_HAPT_28_mask_0501.npy")
+# # label_gd = np.load("labels_gd_UCI_HAPT_28_mask_0501.npy")
+# # P = 20
+# # y_pred_prob = np.load("y_pred_prob_UCI_HAPT_224_UNET_0318.npy")
+# # y_pred = np.load("y_pred_UCI_HAPT_224_UNET_0318.npy")
+# # label_gd = np.load("labels_gd_UCI_HAPT_224_UNET_0318.npy")
 # # y_pred_prob = np.load("y_pred_prob_UCI_HAPT_224_FCN_0318.npy")
 # # y_pred = np.load("y_pred_UCI_HAPT_224_FCN_0318.npy")
 # # label_gd = np.load("labels_gd_UCI_HAPT_224_FCN_0318.npy")
@@ -26,46 +31,124 @@ C = 0
 # N = y_pred.shape[0]
 
 # OPP donnot need post correction unet p = 4
-# P = 10
+# P = 5
+# y_pred_prob = np.load("y_pred_prob_UCI_Opportunity_224_segnet_0427.npy")
+# y_pred = np.load("y_pred_UCI_Opportunity_224_segnet_0427.npy")
+# label_gd = np.load("labels_gd_UCI_Opportunity_224_segnet_0427.npy")
+# # P = 5
+# # y_pred_prob = np.load("y_pred_prob_UCI_Opportunity_28_mask_0501.npy")
+# # y_pred = np.load("y_pred_UCI_Opportunity_28_mask_0501.npy")
+# # label_gd = np.load("labels_gd_UCI_Opportunity_28_mask_0501.npy")
+# # P = 10
 # # y_pred_prob = np.load("y_pred_prob_UCI_Opportunity_224_UNET_0318.npy")
 # # y_pred = np.load("y_pred_UCI_Opportunity_224_UNET_0318.npy")
 # # label_gd = np.load("labels_gd_UCI_Opportunity_224_UNET_0318.npy")
-# y_pred_prob = np.load("y_pred_prob_UCI_Opportunity_224_FCN_0318.npy")
-# y_pred = np.load("y_pred_UCI_Opportunity_224_FCN_0318.npy")
-# label_gd = np.load("labels_gd_UCI_Opportunity_224_FCN_0318.npy")
+# # y_pred_prob = np.load("y_pred_prob_UCI_Opportunity_224_FCN_0318.npy")
+# # y_pred = np.load("y_pred_UCI_Opportunity_224_FCN_0318.npy")
+# # label_gd = np.load("labels_gd_UCI_Opportunity_224_FCN_0318.npy")
 # print('y_pred shape=',y_pred.shape)
 # print('y_gd shape=',label_gd.shape)
 # N = y_pred.shape[0]
 
 # Sanitation FCN P = 25
-P = 25
+# P = 25
+# y_pred_prob = np.load("y_pred_prob_Sanitation_224_segnet_0427.npy")
+# y_pred = np.load("y_pred_Sanitation_224_segnet_0427.npy")
+# label_gd = np.load("labels_gd_Sanitation_224_segnet_0427.npy")
+P = 5
+y_pred_prob = np.load("y_pred_prob_Sanitation_28_mask_0501.npy")
+y_pred = np.load("y_pred_Sanitation_28_mask_0501.npy")
+label_gd = np.load("labels_gd_Sanitation_28_mask_0501.npy")
 # y_pred_prob = np.load("y_pred_prob_Sanitation_224_UNET_0318.npy")
 # y_pred = np.load("y_pred_Sanitation_224_UNET_0318.npy")
 # label_gd = np.load("labels_gd_Sanitation_224_UNET_0318.npy")
-y_pred_prob = np.load("y_pred_prob_Sanitation_224_FCN_0318.npy")
-y_pred = np.load("y_pred_Sanitation_224_FCN_0318.npy")
-label_gd = np.load("labels_gd_Sanitation_224_FCN_0318.npy")
+# y_pred_prob = np.load("y_pred_prob_Sanitation_224_FCN_0318.npy")
+# y_pred = np.load("y_pred_Sanitation_224_FCN_0318.npy")
+# label_gd = np.load("labels_gd_Sanitation_224_FCN_0318.npy")
 print('y_pred shape=',y_pred.shape)
 print('y_gd shape=',label_gd.shape)
 N = y_pred.shape[0]
 
 # WISDM
-# P = 25
+# P = 12
+# y_pred_prob = np.load("y_pred_prob_WISDMar_224_segnet_0427.npy")
+# y_pred = np.load("y_pred_WISDMar_224_segnet_0427.npy")
+# label_gd = np.load("labels_gd_WISDMar_224_segnet_0427.npy")
+# P = 5
+# y_pred_prob = np.load("y_pred_prob_WISDMar_28_mask_0501.npy")
+# y_pred = np.load("y_pred_WISDMar_28_mask_0501.npy")
+# label_gd = np.load("labels_gd_WISDMar_28_mask_0501.npy")
 # # y_pred_prob = np.load("y_pred_prob_WISDMar_224_UNET_0318.npy")
 # # y_pred = np.load("y_pred_WISDMar_224_UNET_0318.npy")
 # # label_gd = np.load("labels_gd_WISDMar_224_UNET_0318.npy")
-# y_pred_prob = np.load("y_pred_prob_WISDMar_224_FCN_0318.npy")
-# y_pred = np.load("y_pred_WISDMar_224_FCN_0318.npy")
-# label_gd = np.load("labels_gd_WISDMar_224_FCN_0318.npy")
+# # y_pred_prob = np.load("y_pred_prob_WISDMar_224_FCN_0318.npy")
+# # y_pred = np.load("y_pred_WISDMar_224_FCN_0318.npy")
+# # label_gd = np.load("labels_gd_WISDMar_224_FCN_0318.npy")
 # print('y_pred shape=',y_pred.shape)
 # print('y_gd shape=',label_gd.shape)
 # N = y_pred.shape[0]
+
+
 
 corrects=0
 for i in range(N):
     if y_pred[i]==label_gd[i]:
         corrects=corrects+1
 print('accuracy={:.4f}'.format(corrects/N))
+
+
+
+B = 0
+F = 0
+C = 0
+overfill = 0
+of = []
+underfill = 0
+uf = []
+fragmentation = 0
+frag = []
+substitution = 0
+sub_long = []
+sub_short = []
+N = y_pred.shape[0]
+i = 0
+while i<N :
+    B=i
+    while y_pred[i] != label_gd[i]:
+        if i<(N-1):
+            C += 1
+            i += 1
+        else:
+            break
+
+    F=i
+    if B != F:
+        if (y_pred[B]!=y_pred[B-1])&(y_pred[B]!=y_pred[F]):
+            con_flag = (np.sum(y_pred[B:F] == y_pred[B])==(F-B))
+            if (y_pred[B-1]==y_pred[F])&(con_flag):
+                fragmentation+=C
+                frag.append(C)
+            else:
+                substitution+=C
+                sub_short.append(C)
+        elif (y_pred[B]==y_pred[B-1])&(y_pred[B]==y_pred[F]):
+            substitution+=C
+            sub_long.append(C)
+        elif y_pred[B]==y_pred[F]:
+            overfill+=C
+            of.append(C)
+        else:
+            underfill+=C
+            uf.append(C)
+        C = 0
+    else:
+        i += 1
+
+print('overfill=',overfill,'rate=',overfill/N)
+print('underfill=',underfill,'rate=',underfill/N)
+print('fragmentation=',fragmentation,'rate=',fragmentation/N)
+print('substitution=',substitution,'rate=',substitution/N)
+
 
 
 # calculate P
@@ -94,7 +177,11 @@ print('accuracy={:.4f}'.format(corrects/N))
 # print(a)
 # logging.info('freq: {}'.format(a))
 
-
+print('post correction')
+# post correction
+B = 0
+F = 0
+C = 0
 i = 0
 while i<N-1 :
     B=i
@@ -135,10 +222,6 @@ while i<N-1 :
         i+=1
         # print('out i',i)
 
-
-
-
-
 corrects=0
 for i in range(N):
     if y_pred[i]==label_gd[i]:
@@ -164,8 +247,11 @@ while i<N :
     B=i
     # print('out while i',i)
     while y_pred[i] != label_gd[i]:
-        C+=1
-        i+=1
+        if i<(N-1):
+            C += 1
+            i += 1
+        else:
+            break
         # cnnlstm sanitation results
         # if i<79967:
         #     i += 1
