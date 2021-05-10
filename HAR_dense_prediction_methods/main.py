@@ -90,6 +90,7 @@ callbacks = [lr_reducer]
 # callbacks = [lr_reducer, early_stopper]
 
 history=model.fit(X, y, batch_size=batch_size, epochs=epochs, validation_split=0.3, callbacks=callbacks)
+# history=model.fit(X_train, y_train, batch_size=batch_size, epochs=epochs, validation_data=(X_test, y_test), callbacks=callbacks) 
 acc=np.array(history.history['acc'])
 loss=np.array(history.history['loss'])
 val_acc = np.array(history.history['val_acc'])
