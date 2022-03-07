@@ -1,6 +1,9 @@
 Human Activity Recognition Based on Motion Sensor Using U-Net
 
 ---
+Human Activity Recognition Based on Motion Sensor Using U-Net
+https://ieeexplore.ieee.org/document/8731875
+Y. Zhang, Z. Zhang, Y. Zhang, J. Bao, Y. Zhang and H. Deng, "Human Activity Recognition Based on Motion Sensor Using U-Net," in IEEE Access, vol. 7, pp. 75213-75226, 2019, doi: 10.1109/ACCESS.2019.2920969.
 - data
     - OPPGestureDataset
         - features_extraction_codes:provides the codes to conduct the features extractions for machine learing algorithms
